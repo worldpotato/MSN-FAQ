@@ -11,7 +11,7 @@
 	\item[Levenberg‐Marquardt] Ist ein numerischer Optimierungsalgorithmus zur Lösung nichtlinearer Ausgleichs-Probleme mit Hilfe der Methode der kleinsten Quadrate. 
 	\item[Range‐Bearing Sensor (mit Beispielen)] Sensor welcher die Richtung und die Entfernung zu einem Messpunkt angibt.
 	\item[Bearing only Sensor (mit Beispielen)] Sensor welcher nur die Richtung angibt.
-	\item[Trajektorie] Der Weg eines Objektes.
+	\item[Trajektorie] Der Weg eines Objektes in abhänigkeit von der Zeit.
 	\item[Koppelnavigation / dead reckoning] Das aneinanderfügen vergangener Standortmessungen, welche jeweils relativ zum letzten Messzeitpunkt sind.
 	\item[Sigma Point Kalman Filter] Kalman Filter für nicht lineare Gleichungssysteme. Legt eine Normalverteilte Punktwolke um den aktuellen Punkt. Stabiler als der Kalmanfilter.
 	\item[Extended Kalman Filter] Iterative Lösung.
@@ -58,6 +58,7 @@
 			\cos\varphi = \frac{\vec{a} \circ \vec{b}}{|\vec{a}| \cdot |\vec{b}|}
 		\end{equation}	
 	\item[zwei Vektoren orthogonal?] (Kap.3)
+		Wenn die Vektoren normiert sind und das Vektorprodukt 1 ergibt?		
 		\begin{equation}
 			\vec{a} \circ \vec{b} = 0
 		\end{equation}
@@ -102,7 +103,10 @@
 	\item[Eigenschaften einer Rotation?] (Kap. 2/8)
 		Winkel der Drehung um jeweils eine Achse.
 	\item[Unterschied zwischen Rotation und Spiegelung?] (nicht im Skript)
-Gegeben sei eine 3 x 3 Matrix. Wie kann überprüft werden, ob es sich um eine Rotation handelt?] (Kap. 2/8)
+	Rotation: überführt ein Rechtwinkliges/Rechtshändiges Koordinatensystem in ein anderes Rechtwinkliges/Rechtshändiges Kooridinatensystem.
+	Spiegelung: Die Hand wechselt.
+	Unterschied (Rechnerisch): Die Detimernante wird -1. RxR ist Einheitsmatrix.
+\item[Gegeben sei eine 3 x 3 Matrix. Wie kann überprüft werden, ob es sich um eine Rotation handelt?] (Kap. 2/8)
 	\item[Darstellung Translation und Rotation als homogene Matrix?] (Kap. 2/9)
 	\item[Vorteile des Rechnen mit homogenen Matrizen?] (nicht im Skript)
 	\item[Wie kann eine homogene Matrix als Koordinatensystem interpretiert werden?] (Kap. 2/11)
@@ -134,7 +138,24 @@ Gegeben sei eine 3 x 3 Matrix. Wie kann überprüft werden, ob es sich um eine R
 \begin{description}
 	\item[Forward/Backward Algorithmus] Die Nutzung der Varianzen, gerechnet vor vorne und hinten.
 	\item[Singulärwertzerlegung] Aufteilung in 3 Teilmatrizen. A = UDVt. U: eine unitäre  m x m-Matrix ist, D: Diagonalmatrix V:  die Adjungierte einer unitären n x n  n x n-Matrix V
-\end{description}
+	\item[UWB Messungen, wie kann eine Trojektorie eschätzt werden] Polynome vom Grad x (p(t) = a0 + a1t + a2t$^2$...) a0 + a1 * 0 + a2 * 0$^2$ + ... = [x0 y0]. Das ganze wird in Matrix-Vektor form gebracht.  Werte in der Struckturmatrix werden werden durch tn geteilt, um sie zu normalisieren. Anschließend in matlab mit ax = linsolve(A, ax)... 
+	\item[Was ist ein homogenes linieares Gleichungssystem] Homogen: Auf den Nullraum abgebildet. (Rechter und untererer Rand sind 0). Lineares Gleichungssystem: gleich viel gleichungen wie unbekannte.
+	\item[Was ist ein überbestimmtes und inhomogenes gleichungssystem] Ich bilde nicht auf dne Nullraum ab und habe mehr gleichungen als Unbekannte.
+	\item[Kernidee Integrity Monitoring] Abweichungen von über 3 Sigma sind nicht zu verwenden.
+\item[Kalman Filter]	
+	\item[Prediction Phase] Der Teil beim Kalmanfilter der als erstes ausgeführt wird, es wird das Bewegungsmodel verwendet und geschätzt wo wir sind.
+	\item[measurement update] die neue Messung kommt rein.
+	\item[Estimation] eigentlicher Filterschritt.
+	\item[wie lauten die Modellannahmen des Kalman Filters] Normalverteilte Rauschen, Normalverteilt, Lineares Bewegungsmodel,
+	\item[Warum linear Verteilt] Damit eine Normalverteilung normal bleibt. 
+	\item[warum ist die Modellannahme "linear" beim EKF wichtig?] Dieser Arbeitet mit nicht linearen Modellen, welche linearisiert werden müssen.
+	\item[Warum Normalverteilungen] Weil diese deutlich einfacher zu verarbeiten sind.  
+	\item[Was bewirkt der Kalmanfilter] Verrechnet eine Schätzung aus einem Bewegungsmodell und der aktuellen Messung miteinander und schätzt dadurch den realen Wert.
+	\item[Warum ergibt eine neue Zustandsschätzung wieder eine Normalverteilung] Weil wir nur Normalverteilungen haben und eine Normalverteilung * Normalverteilung = Normalverteilung
+	\item[Wenn Mittelwert bekannt, wie berechnung der Varian] In Strucktur der Normalverteilung bringen und dann Varianz ablesen.
+	\item[Cartesian Motion] 
+	\item[Warum können hier keine 3x3 Matrizen nicht direkt interpoliert werden?] Da die eigenschaften der Drehungen verloren gehen würden. Daher überführung in RPY darstellung -> überführung in nächstes -> und zurück.
+\end{description} 
 
 \section{Kapitel 5}
 \label{sec:faq:kap5}
