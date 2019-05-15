@@ -1,0 +1,145 @@
+\chapter{FAQ}
+\label{cha:faq}
+
+\section{Kapitel 1}
+\label{sec:faq:kap1}
+\begin{description}
+	\item[Homogene Matrix]
+ 	\item[Pose] Beschreibt die Lage eines Körpers.
+	\item[Singulärwertzerlegung] Zerlegung einer Matrix in 3 Spezielle Matrizen welche miteinander Multipliziert die grundlegende Matrix ergeben. Auf der Hauptdiagonalen der mittleren Matrix stehen die Singularitäten der grundlegenden Matrix. 
+	\item[Bündelblockausgleichung] Eine Ausgleichung um die Bilder von mehreren Kameras oder einer Kamera aus mehreren Winkeln zusammen zu führen und somit ein Bild zu bekommen. Hat als Ergebnis eine nicht lineare Funktion.
+	\item[Levenberg‐Marquardt] Ist ein numerischer Optimierungsalgorithmus zur Lösung nichtlinearer Ausgleichs-Probleme mit Hilfe der Methode der kleinsten Quadrate. 
+	\item[Range‐Bearing Sensor (mit Beispielen)] Sensor welcher die Richtung und die Entfernung zu einem Messpunkt angibt.
+	\item[Bearing only Sensor (mit Beispielen)] Sensor welcher nur die Richtung angibt.
+	\item[Trajektorie] Der Weg eines Objektes.
+	\item[Koppelnavigation / dead reckoning] Das aneinanderfügen vergangener Standortmessungen, welche jeweils relativ zum letzten Messzeitpunkt sind.
+	\item[Sigma Point Kalman Filter] Kalman Filter für nicht lineare Gleichungssysteme. Legt eine Normalverteilte Punktwolke um den aktuellen Punkt. Stabiler als der Kalmanfilter.
+	\item[Extended Kalman Filter] Iterative Lösung.
+	\item[ICP oder Scanmatching] Iterative Closest Point um eine Punktwolke mit 
+	\item[Partikelfilter] Kann aus dem Vergleich vieler Messungen zu einer bekannten "Karte" den Ort absolut bestimmen.
+	\item[RANSAC]Random sample consensus - Eine iterative Methode um outliner zu erkennen oder eine Gerade durch eine Punkwolke zu legen, welche viele outliner hat.
+	\item[Loop closure] Wenn Messungen einen geschlossenen loop bilden. Dies kann genutzt werden um Filter und Ausgleichungen zu testen oder zu verbessern.
+	\item[SLAM] simultaneous localization and mapping - Zeitgleiches Positionieren und mappen der Messdaten. Wird in unbekannter Umgebung verwendet.
+	\item[lokalisieren] Wie kann ich meine Position "Global" berechnen.
+	\item[3D Konstruieren] Daten werden immer vom aktuellen Standort aus aufgenommen. Diese können dann nach einer Lokalisierung ins Globale System überführt werden.
+	\item[Mobile Mapping] Eine Mobile Plattform mit einer Multisensorplattform nimmt die Daten auf. Die Map kann aber im Postprocessing berechnet werden.
+\end{description}
+
+\section{Kapitel 2}
+\label{sec:faq:kap2}
+
+\begin{description}
+	\item[Skalarprodukt] (Kap.2/2) 
+						\begin{equation}
+							\vec{a} \circ \vec{b} = |\vec{a}| \cdot |\vec{b}| \cdot \cos\varphi 
+						\end{equation}
+						\begin{equation}
+							\vec{a} \circ \vec{b} =
+							\left(
+								\begin{array}{c}
+									a_{x} \\
+									a_{y}
+								\end{array}
+							\right) 
+							\cdot 
+							\left(
+								\begin{array}{c}
+									b_{x} \\
+									b_{y}
+								\end{array}
+							\right)
+							=
+							a_{x}b_{x}
+							+
+							a_{y}b_{y} 
+						\end{equation}
+	\item[Winkel zwischen zwei Vektoren?] (Kap.2/2)
+		\begin{equation}
+			\cos\varphi = \frac{\vec{a} \circ \vec{b}}{|\vec{a}| \cdot |\vec{b}|}
+		\end{equation}	
+	\item[zwei Vektoren orthogonal?] (Kap.3)
+		\begin{equation}
+			\vec{a} \circ \vec{b} = 0
+		\end{equation}
+	\item[Vektorprodukt?] (Kap. 2/5)
+		\begin{equation}
+			\vec{a} \times \vec{b} = \vec{c}
+		\end{equation}
+		\begin{equation}
+			|\vec{c}| = |\vec{a}| \cdot |\vec{b}| \cdot \sin\varphi 
+			\quad \textrm{for} \quad 
+			(\ang{0} \leq \varphi \leq \ang{180})
+		\end{equation}
+	\item[Zusammenhang "rechter Hand" und Vektorprodukt?] (Kap. 2/5)
+		Die Rechte Hand gibt die Richtung der Achsen vor. 
+	\item[Matrix/Vektor Form des Vektorproduktes?] (Kap. 2/6)
+		\begin{equation}
+			\vec{a} \times \vec{b} = 
+				\left(
+					\begin{array}{c}
+						a_{x} \\
+						a_{y} \\
+						a_{z}
+					\end{array}
+				\right)
+				\times
+				\left(
+					\begin{array}{c}
+						b_{x} \\
+						b_{y} \\
+						b_{z}				
+					\end{array}
+				\right)
+				= 
+				\left(
+					\begin{array}{c}
+						a_{y}b_{z} - b_{z}a_{y} \\
+						a_{z}b_{x} - b_{x}a_{z} \\
+						a_{x}b_{y} - b_{y}a_{x}  
+					\end{array}
+				\right)				
+		\end{equation}
+	\item[Eigenschaften einer Rotation?] (Kap. 2/8)
+		Winkel der Drehung um jeweils eine Achse.
+	\item[Unterschied zwischen Rotation und Spiegelung?] (nicht im Skript)
+Gegeben sei eine 3 x 3 Matrix. Wie kann überprüft werden, ob es sich um eine Rotation handelt?] (Kap. 2/8)
+	\item[Darstellung Translation und Rotation als homogene Matrix?] (Kap. 2/9)
+	\item[Vorteile des Rechnen mit homogenen Matrizen?] (nicht im Skript)
+	\item[Wie kann eine homogene Matrix als Koordinatensystem interpretiert werden?] (Kap. 2/11)
+	\item[Wie lässt sich aus einer homogenen Matrix der Koordinatenursprung, sowie die Achsen berechnen?] (nicht im Skript)
+	\item[Was versteht man unter einem affinen, orthogonalem und orientierungstreuem Koordinatensystem?] (Kap. 2/11)
+	\item[Was versteht man unter der RPY Darstellung einer Drehung?] (Kap. 2/15)
+	\item[Wie lassen sich aus der RPY Darstellung einer Drehung die drei Winkel zurückrechnen?] (Kap. 2/16)
+	\item[Welche anderen Darstellungen für Drehungen gibt es noch?] (Kap. 2/21)
+\end{description}
+\section{Kapitel 3}
+\label{sec:faq:kap3}
+\begin{description}
+ 	\item[Wie lauten die Modellanahmen des Kalmanfilters]
+	\item[Rauschen ist zufällig] Normalverteilt und nicht systematisch.
+	\item[Lineare abbbilungen] Damit die Normalverteilung eine Normalverteilung bleibt.
+	\item[der EKF arbeitet nicht linear] Das nicht lineares wird linearisiert. Dabei werden Fehler gemacht.
+	\item[In einem Satz: was macht der Kalmanfilter?] Die aktuelle Zugangsschätzung und der neue Messwert haben beide Fehler und die Wahrheit liegt in der Mitte. Aus der Mitte wird der neue Wert der schätzung berechnet.
+	\item[warum gibt die neue Zustandsschätzung wieder eine Normalverteilung] Es wird mit Normalverteilungen gerechnet.
+	\item[Normalverteilung: Zussamenhang zwischen Extremwert und Mittelwert] Sind identisch.
+	\item[Inovation?] Der unterschied zwischen estimation und messung
+	\item[Aus welchen Parametern wird der update Gain berechnet] Standardabweichungen
+	\item[Wertebereich des Gain] 0-1
+	\item[Wie lässt sich der Bereich des Mittelwertes der neuen Schätzung eingrenzen?]
+	
+\end{description}
+
+\section{Kapitel 4}
+\label{sec:faq:kap4}
+\begin{description}
+	\item[Forward/Backward Algorithmus] Die Nutzung der Varianzen, gerechnet vor vorne und hinten.
+	\item[Singulärwertzerlegung] Aufteilung in 3 Teilmatrizen. A = UDVt. U: eine unitäre  m x m-Matrix ist, D: Diagonalmatrix V:  die Adjungierte einer unitären n x n  n x n-Matrix V
+\end{description}
+
+\section{Kapitel 5}
+\label{sec:faq:kap5}
+
+\section{Kapitel 6}
+\label{sec:faq:kap6}
+
+\cite{test}

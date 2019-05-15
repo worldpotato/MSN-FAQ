@@ -1,0 +1,76 @@
+% =========================== Main File =========================== %
+%						  by Felix Strobel
+%						    Licence: MIT
+%			made for Munich University of Applied Sciences
+%
+% =========================== Main File =========================== %	
+
+
+
+% =========================== Contribution =========================== %
+% 					      Do you found a bug?
+%				    Do you know a better solution?		
+%					  You want to add a feature?
+%
+%				       Then follow these steps:
+%    		Fork https://github.com/worldpotato/HM-LaTeX_Template
+%						  Make your changes
+%				   Create a well described Pull Request		
+% =========================== Contribution =========================== %
+
+
+% Document class
+\documentclass[
+	a4paper,
+	12pt]
+	{scrreprt}
+	
+\include{preamble/documentInfos}
+	
+% Packages
+\include{preamble/packages}
+
+\graphicspath{{img/}}
+
+% Do not indent after paragraph
+\setlength{\parindent}{0pt}
+
+% additional hyphenation
+\include{preamble/hyphenation}
+
+
+
+% ============= Begin of document =============
+
+\begin{document}
+
+
+% Pages without header and footer
+\pagestyle{empty}
+
+	\include{content/01_title}
+
+	% Ends a page and force printing all defined but not printed floating objects on all following pages. If neccessary a 	black page will be inserted to make sure that the next page has an odd number.
+	\cleardoubleoddpage
+
+% activate pagestyle for whole document
+\pagestyle{fancy}
+	\include{preamble/header}
+	\include{preamble/footer}
+	
+	% Index of contents
+	\tableofcontents
+
+	% Index of pictures
+	\listoffigures
+
+	% Index of tables
+	\listoftables
+
+	\include{content/02_faq}
+
+	% references
+	\bibliographystyle{unsrtdin}
+	\bibliography{bib/literature}
+
+\end{document}
