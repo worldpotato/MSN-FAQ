@@ -1,13 +1,20 @@
-# HM_tex_template
-This is my basic tempalte for all documents related to my studies at the Munich University of Applied Sciences
+# MSN-FAQ
+Make your changes in a seperated Branch and create a Pull Request.
 
-# Different Styles/Branches
-## Master
- - Page Style: Single page
- - Header: Chapter title on following pages always on the right side
- - Footer: Pagenumber always in the center
+# Latex
+[How to get latex](https://www.latex-project.org/get/)
 
-## Two_Side_Layout
- - Page Style: Two pages
- - Header: Chapter title inside
- - Footer: Pagenumber outside
+[Texmaker (Latex Editor)](http://www.xm1math.net/texmaker/)
+
+[Simple Guide to Latex](https://www.latex-tutorial.com/tutorials/)
+
+[Gutes Latex Video Tutorial (Deutsch)](https://www.youtube.com/user/LaTeXTutorial)
+
+# Struktur
+
+Hauptdokument: `00_master.tex`
+Inhalts Seiten: `/content`
+bib file: `/bib`
+Bilder: `/img`
+Footer, header, hyphenation(Worttrennungen), packages, documentInfos: `/preamble`
+
