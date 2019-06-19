@@ -1,137 +1,363 @@
-\chapter{FAQ}
-\label{cha:faq}
+\chapter{Stoffübersicht}
+\label{uebersichtStoffübersicht}
 
-\section{Kapitel 1}
-\label{sec:faq:kap1}
-\begin{description}
-	\item[Homogene Matrix]
- 	\item[Pose] Beschreibt die Lage eines Körpers.
-	\item[Singulärwertzerlegung] Zerlegung einer Matrix in 3 Spezielle Matrizen welche miteinander Multipliziert die grundlegende Matrix ergeben. Auf der Hauptdiagonalen der mittleren Matrix stehen die Singularitäten der grundlegenden Matrix. 
-	\item[Bündelblockausgleichung] Eine Ausgleichung um die Bilder von mehreren Kameras oder einer Kamera aus mehreren Winkeln zusammen zu führen und somit ein Bild zu bekommen. Hat als Ergebnis eine nicht lineare Funktion.
-	\item[Levenberg‐Marquardt] Ist ein numerischer Optimierungsalgorithmus zur Lösung nichtlinearer Ausgleichs-Probleme mit Hilfe der Methode der kleinsten Quadrate. 
-	\item[Range‐Bearing Sensor (mit Beispielen)] Sensor welcher die Richtung und die Entfernung zu einem Messpunkt angibt.
-	\item[Bearing only Sensor (mit Beispielen)] Sensor welcher nur die Richtung angibt.
-	\item[Trajektorie] Der Weg eines Objektes in abhänigkeit von der Zeit.
-	\item[Koppelnavigation / dead reckoning] Das aneinanderfügen vergangener Standortmessungen, welche jeweils relativ zum letzten Messzeitpunkt sind.
-	\item[Sigma Point Kalman Filter] Kalman Filter für nicht lineare Gleichungssysteme. Legt eine Normalverteilte Punktwolke um den aktuellen Punkt. Stabiler als der Kalmanfilter.
-	\item[Extended Kalman Filter] Iterative Lösung.
-	\item[ICP oder Scanmatching] Iterative Closest Point um eine Punktwolke mit 
-	\item[Partikelfilter] Kann aus dem Vergleich vieler Messungen zu einer bekannten "Karte" den Ort absolut bestimmen.
-	\item[RANSAC]Random sample consensus - Eine iterative Methode um outliner zu erkennen oder eine Gerade durch eine Punkwolke zu legen, welche viele outliner hat.
-	\item[Loop closure] Wenn Messungen einen geschlossenen loop bilden. Dies kann genutzt werden um Filter und Ausgleichungen zu testen oder zu verbessern.
-	\item[SLAM] simultaneous localization and mapping - Zeitgleiches Positionieren und mappen der Messdaten. Wird in unbekannter Umgebung verwendet.
-	\item[lokalisieren] Wie kann ich meine Position "Global" berechnen.
-	\item[3D Konstruieren] Daten werden immer vom aktuellen Standort aus aufgenommen. Diese können dann nach einer Lokalisierung ins Globale System überführt werden.
-	\item[Mobile Mapping] Eine Mobile Plattform mit einer Multisensorplattform nimmt die Daten auf. Die Map kann aber im Postprocessing berechnet werden.
-\end{description}
+\section{Homogene Matrix}	
+\label{uebersicht:sec:homogeneMatrix}
+	Matrix, die Positionen und Orientierung beinhaltet 
+	\begin{equation}
+	M = 
+	\left(
+	\begin{array}{cc}
+	R & T\\
+	0 & 1
+	\end{array}
+	\right)
+	=
+	\left(
+	\begin{array}{cccc}
+	r_{11} & r_{12} & r_{13} & t_{1} \\
+	r_{21} & r_{22} & r_{23} & t_{1} \\
+	r_{31} & r_{23} & r_{33} & t_{1} \\
+	0 	   & 0    & 0    & 1  
+	\end{array}
+	\right)	
+	\end{equation}
+	
+	Wird verwendet, damit man einfacher rechnen kann.
 
-\section{Kapitel 2}
-\label{sec:faq:kap2}
+\section{Pose}	
+\label{uebersicht:sec:pose}
+Beschreibt die Lage eines Körpers.
 
-\begin{description}
-	\item[Skalarprodukt] (Kap.2/2) 
-						\begin{equation}
-							\vec{a} \circ \vec{b} = |\vec{a}| \cdot |\vec{b}| \cdot \cos\varphi 
-						\end{equation}
-						\begin{equation}
-							\vec{a} \circ \vec{b} =
-							\left(
-								\begin{array}{c}
-									a_{x} \\
-									a_{y}
-								\end{array}
-							\right) 
-							\cdot 
-							\left(
-								\begin{array}{c}
-									b_{x} \\
-									b_{y}
-								\end{array}
-							\right)
-							=
-							a_{x}b_{x}
-							+
-							a_{y}b_{y} 
-						\end{equation}
-	\item[Winkel zwischen zwei Vektoren?] (Kap.2/2)
-		\begin{equation}
-			\cos\varphi = \frac{\vec{a} \circ \vec{b}}{|\vec{a}| \cdot |\vec{b}|}
-		\end{equation}	
-	\item[zwei Vektoren orthogonal?] (Kap.3)
-		Wenn die Vektoren normiert sind und das Vektorprodukt 1 ergibt?		
+
+\section{Singulärwertzerlegung}	
+\label{uebersicht:sec:singulärwertzerlegung}
+Zerlegung einer Matrix in 3 Spezielle Matrizen welche miteinander Multipliziert die grundlegende Matrix ergeben. Auf der Hauptdiagonalen der mittleren Matrix stehen die Singularitäten der grundlegenden Matrix. 
+	
+	
+\section{Levenberg‐Marquardt}
+\label{uebersicht:sec:Levenberg‐Marquardt}
+	Der Levenberg-Marquardt-Algorithmus ist ein numerischer Optimierungsalgorithmus zur Lösung nichtlinearer Ausgleichs-Probleme mit
+	Hilfe der Methode der kleinsten Quadrate. Das Verfahren kombiniert das Gauß-Newton-Verfahren mit einer Regularisierungstechnik, die
+	absteigende Funktionswerte erzwingt. Deutlich robuster als das Gauß-Newton-Verfahren, das heißt, er konvergiert mit einer hohen
+	Wahrscheinlichkeit auch bei schlechten Startbedingungen, allerdings ist auch hier Konvergenz nicht garantiert. Ferner ist er bei
+	Anfangswerten, die nahe dem Minimum liegen, oft etwas langsamer. 
+	
+\section{Bündelblockausgleichung}
+\label{uebersicht:sec:Bündelblockausgleichung}
+	Das Optimieren der "Sehstrahlenbündel" einer 3D-Szene, die von mehreren Kameras bzw. von einer Kamera aus mehreren Perspektiven
+	aufgenommen wird. Bei der Bündelblockausgleichung können gleichzeitig die Positionen der Punkte im 3D-Raum, die Positionen und
+	Orientierungen der beobachtenden Kameras sowie deren interne Kalibrierparameter derart an die Messbilder angepasst werden, dass
+	verbleibende Fehler (z. B. Bildverzerrungen, Messfehler der Auswertung) möglichst optimal auf alle Beobachtungen verteilt werden.
+	Speziell wird der Begriff verwendet, um nicht nur einzelne Bildpaare (je 2 überdeckende Messbilder) photogrammetrisch auszuwerten,
+	sondern eine beliebige Anzahl von zusammenhängenden Bildern (Block) miteinander zu verknüpfen. Zur Berechnung könnte man z.B.
+	Levenberg-Marquardt-Algorithmus nehmen. 
+
+\section{Range‐Bearing Sensor}
+\label{uebersicht:sec:Range‐BearingSensor}
+	Sensor welcher die Richtung und die Entfernung zu einem Messpunkt angibt. \\ \textbf{Beispiel:} Lidar
+
+\section{Bearing only Sensor}
+\label{uebersicht:sec:BearingonlySensor}
+	Sensor welcher nur die Richtung angibt. Theodolit und Kamera
+
+\section{Trajektorie}
+\label{uebersicht:sec:Trajektorie}
+	Der Weg eines Objektes in abhänigkeit von der Zeit.
+	
+\section{Koppelnavigation}
+\label{uebersicht:sec:Koppelnavigation}
+	Koppelnavigation oder dead reckoning ist das aneinanderfügen vergangener Standortmessungen, welche jeweils relativ zum letzten Messzeitpunkt sind.
+	
+\section{Sigma Point Kalman Filter}
+\label{uebersicht:sec:SigmaPointKalmanFilter}
+	Kalman Filter für nicht lineare Gleichungssysteme. Legt eine Normalverteilte Punktwolke um den aktuellen Punkt. Stabiler als der Kalmanfilter.
+
+\section{Extended Kalman Filter}
+\label{uebersicht:sec:ExtendedKalmanFilter}
+	Der EKF ist eine nicht lineare Version des Kalman Filters welcher mittels einer Schätzung des 
+	aktuellen Mittels und der Covarianzen linearisiert wird.
+
+\section{ICP oder Scanmatching}
+\label{uebersicht:sec:ICPoderScanmatching}
+	Iterative Closest Point um den kürzesten Abstand zwischen zwei Punktwolken zu bestimmen. Wird genutzt um Ob
+
+\section{Partikelfilter}
+\label{uebersicht:sec:Partikelfilter}
+	Kann aus dem Vergleich vieler Messungen zu einer bekannten "Karte" den Ort absolut bestimmen.
+
+\section{RANSAC}
+\label{uebersicht:sec:RANSAC}
+	Random sample consensus - Eine iterative Methode um outliner zu erkennen oder eine Gerade durch eine Punkwolke zu legen, welche viele outliner hat.
+
+\section{Loop closure}
+\label{uebersicht:sec:LoopClosure}
+	Wenn Messungen einen geschlossenen loop bilden. Dies kann genutzt werden um Filter und Ausgleichungen zu testen oder zu verbessern.
+
+\section{SLAM}
+\label{uebersicht:sec:SLAM}
+	Simultaneous localization and mapping - Zeitgleiches Positionieren und mappen der Messdaten. Wird in unbekannter Umgebung verwendet.
+	
+\chapter{Einführung}
+\label{Einführung}	
+
+\section{Lokalisieren}
+\label{einfuehrung:sec:lokalisieren}
+	Wie kann ich meine Position "Global" berechnen.
+	
+\section{3D Konstruieren}
+\label{einfuehrung:sec:3DKonstruieren}
+	Daten werden immer vom aktuellen Standort aus aufgenommen. Diese können dann nach einer Lokalisierung ins 
+	Globale System überführt werden.
+
+\section{Mobile Mapping}
+\label{einfuehrung:sec:MobileMapping}
+	Eine Mobile Plattform mit einer Multisensorplattform nimmt die Daten auf. Die Map kann aber im Postprocessing berechnet werden.
+
+
+
+\chapter{Mathematische Grundlagen}
+\label{MathematischeGrundlagen}
+
+
+
+
+\section{Skalarprodukt}
+
+	\begin{equation}
+		\vec{a} \circ \vec{b} = |\vec{a}| \cdot |\vec{b}| \cdot \cos\varphi 
+	\end{equation}
+	\begin{equation}
+		\vec{a} \circ \vec{b} =
+		\left(
+		\begin{array}{c}
+		a_{x} \\
+		a_{y}
+		\end{array}
+		\right) 
+		\cdot 
+		\left(
+		\begin{array}{c}
+		b_{x} \\
+		b_{y}
+		\end{array}
+		\right)
+		=
+		a_{x}b_{x}
+		+
+		a_{y}b_{y} 
+	\end{equation}
+
+\section{Winkel zwischen zwei Vektoren}
+	\begin{equation}
+		\cos\varphi = \frac{\vec{a} \circ \vec{b}}{|\vec{a}| \cdot |\vec{b}|}
+	\end{equation}	
+
+
+\section{Orthononalität}
+	Wenn die Vektoren normiert sind und das Vektorprodukt 0 ergibt?		
 		\begin{equation}
 			\vec{a} \circ \vec{b} = 0
 		\end{equation}
-	\item[Vektorprodukt?] (Kap. 2/5)
-		\begin{equation}
-			\vec{a} \times \vec{b} = \vec{c}
-		\end{equation}
-		\begin{equation}
-			|\vec{c}| = |\vec{a}| \cdot |\vec{b}| \cdot \sin\varphi 
-			\quad \textrm{for} \quad 
-			(\ang{0} \leq \varphi \leq \ang{180})
-		\end{equation}
-	\item[Zusammenhang "rechter Hand" und Vektorprodukt?] (Kap. 2/5)
-		Die Rechte Hand gibt die Richtung der Achsen vor. 
-	\item[Matrix/Vektor Form des Vektorproduktes?] (Kap. 2/6)
-		\begin{equation}
-			\vec{a} \times \vec{b} = 
-				\left(
-					\begin{array}{c}
-						a_{x} \\
-						a_{y} \\
-						a_{z}
-					\end{array}
-				\right)
-				\times
-				\left(
-					\begin{array}{c}
-						b_{x} \\
-						b_{y} \\
-						b_{z}				
-					\end{array}
-				\right)
-				= 
-				\left(
-					\begin{array}{c}
-						a_{y}b_{z} - b_{z}a_{y} \\
-						a_{z}b_{x} - b_{x}a_{z} \\
-						a_{x}b_{y} - b_{y}a_{x}  
-					\end{array}
-				\right)				
-		\end{equation}
-	\item[Eigenschaften einer Rotation?] (Kap. 2/8)
-		Winkel der Drehung um jeweils eine Achse.
-	\item[Unterschied zwischen Rotation und Spiegelung?] (nicht im Skript)
-	Rotation: überführt ein Rechtwinkliges/Rechtshändiges Koordinatensystem in ein anderes Rechtwinkliges/Rechtshändiges Kooridinatensystem.
-	Spiegelung: Die Hand wechselt.
-	Unterschied (Rechnerisch): Die Detimernante wird -1. RxR ist Einheitsmatrix.
-\item[Gegeben sei eine 3 x 3 Matrix. Wie kann überprüft werden, ob es sich um eine Rotation handelt?] (Kap. 2/8)
-	\item[Darstellung Translation und Rotation als homogene Matrix?] (Kap. 2/9)
-	\item[Vorteile des Rechnen mit homogenen Matrizen?] (nicht im Skript)
-	\item[Wie kann eine homogene Matrix als Koordinatensystem interpretiert werden?] (Kap. 2/11)
-	\item[Wie lässt sich aus einer homogenen Matrix der Koordinatenursprung, sowie die Achsen berechnen?] (nicht im Skript)
-	\item[Was versteht man unter einem affinen, orthogonalem und orientierungstreuem Koordinatensystem?] (Kap. 2/11)
-	\item[Was versteht man unter der RPY Darstellung einer Drehung?] (Kap. 2/15)
-	\item[Wie lassen sich aus der RPY Darstellung einer Drehung die drei Winkel zurückrechnen?] (Kap. 2/16)
-	\item[Welche anderen Darstellungen für Drehungen gibt es noch?] (Kap. 2/21)
-\end{description}
-\section{Kapitel 3}
+
+\section{Vektorprodukt}
+	\begin{equation}
+		\vec{a} \times \vec{b} = \vec{c}
+	\end{equation}
+	\begin{equation}
+		|\vec{c}| = |\vec{a}| \cdot |\vec{b}| \cdot \sin\varphi 
+		\quad \textrm{for} \quad 
+		(\ang{0} \leq \varphi \leq \ang{180})
+	\end{equation}
+
+
+\section{Rechte Hand Regel}
+	Die Rechte Hand gibt die Richtung der Achsen vor.
+	\begin{itemize}
+		\item Daumen: X
+		\item Zeigefinger: Y
+		\item Mittelfinger: Z
+	\end{itemize}
+
+
+\section{Vektorprodukt}
+
+	\begin{equation}
+		\vec{a} \times \vec{b} = 
+		\left(
+		\begin{array}{c}
+			a_{x} \\
+			a_{y} \\
+			a_{z}
+		\end{array}
+		\right)
+		\times
+		\left(
+		\begin{array}{c}
+			b_{x} \\
+			b_{y} \\
+			b_{z}				
+		\end{array}
+		\right)
+		= 
+		\left(
+		\begin{array}{c}
+			a_{y}b_{z} - b_{z}a_{y} \\
+			a_{z}b_{x} - b_{x}a_{z} \\
+			a_{x}b_{y} - b_{y}a_{x}  
+		\end{array}
+		\right)				
+	\end{equation}
+
+
+\section{Rotation}
+
+\begin{enumerate}
+	\item Winkel der Drehung um jeweils eine Achse
+	\item Rotationsmatrix multipliziert mit der Transponierten ergibt die Einheitsmatrix $I$
+	\item Spalten stehen Senkrecht aufeinander
+\end{enumerate}
+
+\section{Rotation vs. Spiegelung}
+
+	\subsection{Rotation}
+ 		überführt ein Rechtwinkliges/Rechtshändiges Koordinatensystem in ein anderes Rechtwinkliges/Rechtshändiges Kooridinatensystem. RxR ist Einheitsmatrix.
+ 	\subsection{Spiegelung}
+		Die Hand wechselt. Die Detimernante wird -1
+
+\section{Prüfung auf Rotation}
+
+\begin{lstlisting}[
+style      = Matlab-editor,
+basicstyle = \mlttfamily,
+]
+if abs(max(max((rotation * rotation') - eye(3)))) > 0.0000000000001
+isRotation = false;
+else
+isRotation = true;
+
+\end{lstlisting}
+
+
+\section{Homogene Matrix}
+
+\subsection{Translation und Rotation}
+\begin{equation}
+	M = 
+	\left(
+	\begin{array}{cc}
+		R & T\\
+		0 & 1
+	\end{array}
+	\right)
+	=
+	\left(
+	\begin{array}{cccc}
+		r_{11} & r_{12} & r_{13} & t_{1} \\
+		r_{21} & r_{22} & r_{23} & t_{1} \\
+		r_{31} & r_{23} & r_{33} & t_{1} \\
+		0 	   & 0    & 0    & 1  
+	\end{array}
+	\right)	
+\end{equation}
+
+\subsection{Vorteile}
+	Mehrere Bewegungen können durch Matrixmultiplikation aneinander gekettet werden bzw. leichter invertiert werden.
+
+\subsection{Intepretation als Koordinatenursprung}
+
+\subsection{Berechnung Koordinatenursprung}
+
+\subsection{Berechnung der Achsen}
+
+\section{Koordinatensysteme}
+
+\subsection{Affines Koordinatensystem}
+Lineare Koordinatensystem
+
+\subsection{Orthogonales Koordinatensytem}
+Rechtwinklig
+
+\subsection{Orientierungstreues Koordinatensystem}
+Es bleibt nach der rechten Hand definiert.
+
+\section{RPY Darstellung}
+Jede Rotation kann als Roll, Pitch, Yaw dargestellt werden.
+
+\begin{tabular}{cc}
+	Roll & X-Achse \\
+	Pitch & Y-Achse \\
+	Yaw & Z-Achse
+\end{tabular}
+
+
+\subsection{Rotation als RPY}
+Dabei können Singularitäten auftreten. (Bei Pitch = $\pi/2 $) \\
+	\textbf{Matrix to RPY}
+\begin{lstlisting}[
+style      = Matlab-editor,
+basicstyle = \mlttfamily,
+]
+y = atan2(rotation(2,1), rotation(1,1));
+p = atan2(-rotation(3,1), rotation(1,1) * cos(y) + rotation(2,1) * sin(y));
+r = atan2(rotation(3,2)/cos(p), rotation(3,3)/cos(p));
+\end{lstlisting} 
+
+\subsection{RPY to Matrix}
+Eine Rotation, welche zuerst um die Roll, dann die Pitch und zuletzt die Yaw achse dreht
+
+\begin{equation}
+R_{\alpha, \beta, \gamma} % rpy
+=
+\left(
+\begin{array}{ccc}
+\cos{\alpha}\cos{\beta} & \cos{\alpha}\sin{\beta}\sin{\gamma} - \sin{\alpha}\cos{\gamma}  & \cos{\alpha}\sin{\beta}\cos{\gamma} + \sin{\alpha}\cos{\gamma} \\
+\sin{\alpha}\cos{\beta} & \sin{\alpha}\sin{\beta}\sin{\gamma} + \cos{\alpha}\cos{\gamma} & \sin{\alpha}\sin{\beta}\cos{\gamma} - \cos{\alpha}\sin{\gamma}  \\
+-\sin{\beta}	   & \cos{\beta}\sin{\gamma}    &   \cos{\beta}\cos{\gamma}
+\end{array}
+\right)	
+\end{equation}
+
+
+\subsection{Weitere Darstellungen}
+\begin{itemize}
+	\item Quaternionen
+	\item Axis/Angle Darstellung -> numerisch stabil
+\end{itemize}
+
+\section{Kalmanfilter}
 \label{sec:faq:kap3}
-\begin{description}
- 	\item[Wie lauten die Modellanahmen des Kalmanfilters]
-	\item[Rauschen ist zufällig] Normalverteilt und nicht systematisch.
-	\item[Lineare abbbilungen] Damit die Normalverteilung eine Normalverteilung bleibt.
-	\item[der EKF arbeitet nicht linear] Das nicht lineares wird linearisiert. Dabei werden Fehler gemacht.
-	\item[In einem Satz: was macht der Kalmanfilter?] Die aktuelle Zugangsschätzung und der neue Messwert haben beide Fehler und die Wahrheit liegt in der Mitte. Aus der Mitte wird der neue Wert der schätzung berechnet.
-	\item[warum gibt die neue Zustandsschätzung wieder eine Normalverteilung] Es wird mit Normalverteilungen gerechnet.
-	\item[Normalverteilung: Zussamenhang zwischen Extremwert und Mittelwert] Sind identisch.
-	\item[Inovation?] Der unterschied zwischen estimation und messung
-	\item[Aus welchen Parametern wird der update Gain berechnet] Standardabweichungen
-	\item[Wertebereich des Gain] 0-1
-	\item[Wie lässt sich der Bereich des Mittelwertes der neuen Schätzung eingrenzen?]
-	
-\end{description}
+
+Die aktuelle Zugangsschätzung und der neue Messwert haben beide Fehler und die Wahrheit liegt in der Mitte. Aus der Mitte wird der neue Wert der schätzung berechnet.
+
+
+\subsection{Modellanahmen}
+
+\begin{itemize}
+	\item Rauschen ist zufällig - normalverteilt und nicht systematisch
+	\item Lineare Abbildung, damit die Normalverteilung eine Normalverteilung bleibt.
+\end{itemize}
+
+\subsection{EKF nicht linear}
+ Das nicht lineares wird linearisiert. Dabei werden Fehler gemacht.
+
+\subsection{Warum ist die Zustandsschätzung wieder eine Normalverteilung}
+Es wird mit linearen Modellen und Normalverteilungen gerechnet.
+
+\subsection{Zusammenhang Extremwert und Mittelwert}
+Bei Normalverteilungen sind sie identisch.
+
+\subsection{Inovation?}
+Der Unterschied zwischen Estimation und Messung.
+
+\subsection{Parameter des Gain}
+Standardabweichung
+
+\subsection{Wertebereich des Gain}
+0-1
+
+\subsection{Eingrenzung des Bereichs des Mittelwerts der Schätzung}
+
 
 \section{Kapitel 4}
 \label{sec:faq:kap4}
@@ -160,7 +386,75 @@
 \section{Kapitel 5}
 \label{sec:faq:kap5}
 
-\section{Kapitel 6}
-\label{sec:faq:kap6}
+\newpage
 
-\cite{test}
+\chapter{Partikelfilter}
+\label{kap6Partikelfilter}
+
+
+	
+	\section{WDF}
+	Wahrscheinlichkeitsdichtefunktion \cite{wdf}
+	
+	\section{Mutation}
+	Das verändern eines Messwertes von einer Generation zur nächsten
+	
+	\section{Modellannahmen des Partikelfilters}
+	
+	\begin{itemize}
+		\item Sensoren nicht normalverteilt
+		\item WDF kann multimodal / mit mehreren Peaks sein, damit kann ich mich Global positionieren
+	\end{itemize}
+	
+
+		
+	
+	\section{Kalmanfilter vs. Partikelfilter}	
+		\begin{itemize}
+		\item Normalverteilt vs. nicht normalverteilt
+		\item Linear vs. nicht linear
+		\item Kalmanfilter ist mathematisch, Partikelfilter ist algorithmisch
+	\end{itemize}
+
+	\section{Generation}
+		Eine Menge von N posen (Partikel) zum Zeitpunkt $X_k$ \\
+		Jede Generation approzimiert die Wahrscheinlichkeitsdichtefunktion (WDF) anhand des momentan verfügbaren Wissens
+
+	\section{Partikel}
+		Eine Pose der Generation $X_k$
+		
+	\section{Schritte des Partikelfilter}
+
+		Es gibt einen Init und fünf reguläre Schritte dazu noch einen um die Position zu berechnen
+		
+		\subsection{Init}
+		Initialisierung durch Gleichverteilung von Partikeln
+		
+		\subsection{Bewegung}
+		Bewegen des Roboters \textit{(Zeitpunkt k - 1)}
+		
+		\subsection{Messung}
+		Messung durchführen \textit{(Zeitpunkt k)}
+		
+		\subsection{Propagation}
+		Propagation aller Partikel durch Bewegungsmodell (Zeitpunkt k) (Mutation kann auch hier durchgeführt werden)
+		Hier werden die Partikel mit dem Bewegungsmodel bewegt. \\
+		Wenn $Q$ (Rauschen) mit 0 angenommen wird, \\
+		$Q$ wird verwendet um das Rauschen der Sensoren zu imitieren. Außerdem wird es verwendet um die Partikel zu verteilen.
+		
+		\subsection{Gewichtung}
+		Bewertung der Messungen für jedes Partikel. \\
+		\\
+		\textbf{Gewichtung Beispiel:} \\
+		Differenz zwischen Partikelmessung und realer Messung. Reale Messung als Zentrum einer Normalverteilung und Gewichtung entspricht der Wahrscheinlichkeit in dieser Normalverteilung.
+		
+		\subsection{Neuverteilung der Partikel}
+		Neuverteilung der Partikel mit Mutation
+		
+		\subsection{Berechnung der Position}	
+		Berechnung der Position mittels gewichtetem Mittel oder ransac \cite{ransac} (\ref{uebersicht:sec:RANSAC})
+
+	
+	\section{Anzahl Schleifen in Init}
+	Wieviel Schleifen in init
+
