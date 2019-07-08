@@ -1,0 +1,47 @@
+\chapter{Trajektorie}
+\label{chp:trajektorie}
+
+\section{Definition}
+Der Weg eines Objektes in Abhängigkeit von der Zeit.\\
+Stellt auch die Lösungskurve einer Differenzialgleichung dar.
+
+\begin{equation}
+P_{(t)} = 
+\left(
+\begin{array}{c}
+a_0 + a_1t + a_2t^2 \\
+b_0 + b_1t + b_1t^2
+\end{array} 
+\right)
+\end{equation} 
+
+\section{Quintisches Polynom}
+Ein Quintisches Polynom enthält 6 Komponenten $\{a_0, a_1, a_2 , ..., a_5\}$ und ist, wie der Name vermuten lässt, vom 5. Grad. \\
+
+\subsection{Interpolations Annahmen}
+Es werden $Freiheitsgrad + 1$ Annahmen benötigt. \\
+Diese können z.B. Position, Geschwindigkeit und Beschleunigung jeweils für den Start- und End-Punkt.\\
+\\
+Alternativ könnten auch Position, Range und Bearing jeweils für den Start und End-Punkt als Annahme dienen.
+
+\subsection{Pseudocode Implementierung}
+\begin{enumerate}
+	\item Erstellen der Strukturmatrix mit Normierter Zeit variable  $A$(1x6)
+	\item Erstellen des Ergebnisvektors $b$ (2x1)
+	\item Lineares Gleichungssystem lösen
+	\item Zeitpunkt bestimmen, an dem die Position bestimmt werden soll.
+	\item Zeitpunkt in Gleichungssystem einsetzen
+\end{enumerate}
+
+\subsection{Überbestimmung}
+Wenn es mehr Interpolationsbedingungen als Freiheitsgrade gibt ist es nicht mehr eindeutig zu lösen. Dies führt zu einer Unsicherheit.
+
+\subsection{Vorteile des Quintischen Polynoms}
+\begin{itemize}
+	\item Beschreiben der Trajektorie speicherarm als Mathematische Funktion.
+	\item Einfaches Interpolieren
+\end{itemize}
+
+\subsection{Vorteile von Endpunkt $T = 1$}
+Das Polynom bleibt dadurch numerisch stabiler.
+

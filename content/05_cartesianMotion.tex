@@ -1,0 +1,46 @@
+\chapter{Cartesian Motion}
+\label{chp:cartesianMotion}
+Cartesian Motion ist eine Bewegung auf $n$ rechtwinklig zueinander stehenden Achsen.
+
+\section{Glatter Übergang zwischen zwei Koordinatensystemen}
+Um den Übergang zwischen Koordinatensystemen zu berechnen muss für die Rotation die RPY Darstellung [\ref{chp:MathematischeGrundlagen:sec:RPY}] verwendet werden. \\
+Anschließend wird Komponentenweise interpoliert.
+
+
+\begin{enumerate}
+\item Interpolieren von RPY
+\begin{equation}
+		\begin{array}{l}
+		r^{(i)}(s) := (1 - s) \cdot r^{(0)} + sr^{(N)} \\
+		p^{(i)}(s) := (1 - s) \cdot p^{(0)} + sp^{(N)}\\
+		y^{(i)}(s) := (1 - s) \cdot y^{(0)} + sy^{(N)}\\
+		\\
+		mit \; s := \frac{k}{N+1} \;|\; k \; \in \{1,...,N-1\}
+		
+		
+		\end{array}
+\end{equation}
+
+\item Interpolieren des Ursprungs
+
+\begin{equation}
+\begin{array}{l}
+T_x^{(i)}(s) := (1 - s) \cdot T_x^{(0)} + sT_x^{(N)}\\
+T_y^{(i)}(s) := (1 - s) \cdot T_y^{(0)} + sT_y^{(N)}\\
+T_z^{(i)}(s) := (1 - s) \cdot T_z^{(0)} + sT_z^{(N)} \\
+\end{array}
+\end{equation} 	
+\end{enumerate}
+
+
+\section{Warum nicht mit 3x3 Matrix}
+Da die Eigenschaften der Drehungen verloren gehen würden. Daher:
+
+\begin{enumerate}
+	\item Überführung in RPY Darstellung
+	\item Überführung in nächstes Koordinatensystem.
+	\item Zurück in Rotationsmatrix
+\end{enumerate}
+
+\section{Nachteil von RPY Darstellung}
+Dabei können Singularitäten auftreten. Bei Pitch = $\pi/2 $ bzw. 90\textdegree) \\
