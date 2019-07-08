@@ -1,3 +1,6 @@
+# Ich räume das dokument gerade etwas auf
+aktuelle version in Branch `tidyUp`
+
 # MSN-FAQ
 Make your changes in a seperated Branch and create a Pull Request.
 
