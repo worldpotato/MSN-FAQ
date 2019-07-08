@@ -1,0 +1,43 @@
+\chapter{Singulärwertzerlegung}
+\label{chp:singulaerwertzerlegung}
+ Eine Singulärwertzerlegung ist die Aufteilung in 3 Teilmatrizen. 
+ 
+ \begin{equation}
+ 	A = UDV^t
+ \end{equation}
+ 
+ \begin{tabular}{cl}
+ 	U & := eine unitäre  m x m-Matrix \\
+ 	D & := Diagonalmatrix mit Eignevalues \\
+ 	V & := Adjungierte einer unitären n x n Matrix
+ \end{tabular}
+
+\section{Pseudoinverse}
+
+Eine Pseudoinverse bildet die auf sinuläre Matrizen verallgemeinerte Inverse einer Matrix.
+
+\begin{equation}
+A^t := VD^{-1}U^t \; mit \; diag(D^{-1}) = \frac{1}{\sigma})
+\end{equation}
+
+Dann heißt die so berechnete Matrix Pseudoinverse $A^t$. 
+
+\section{Anwendung}
+
+\subsection{Nichtsingulär}
+
+Eine Matrix ist genau dann nichtsingulär, wenn 
+\begin{equation}
+\forall \sigma: \sigma = 0
+\end{equation}
+
+
+\subsection{Schlecht konditioniert}
+Eine Matrix ist schlecht konditioniert, wenn
+
+\begin{equation}
+\frac{\sigma_{n-1}}{\sigma_0} \approx 0
+\end{equation}
+
+Dies hat zur Folge, dass der Gleichungsterm nicht stabil gelöst werden kann.
+ 

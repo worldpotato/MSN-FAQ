@@ -78,6 +78,12 @@
 		\hat{P}_k = (I - K_k \, H_k)\bar{P}_k
 	\end{equation}
 	
-	
-	
 \end{enumerate}
+
+\section{Integrity Monitor}
+Ein Integrity Monitor erkennt Außreiser und filtert diese. Beim Kalmanfilter bedeutet dies, dass die Messung nicht verwendet wird und dieser eine Schritt nur mit dem Bewegungsmodell geschätzt wird. \\
+Typischerweise werden Messungen welche außerhalb von $ 3 \, \sigma $ liegen, als Ausreiser deklariert.
+
+\section{Multisensorentwurf}
+Um mehrere Sensoren mit unterschiedlichen Taktraten zu Fusionieren wird mit der höchsten verfügbaren Taktrate \footnote{Meist ist dies der Odometriesensor oder die IMU} durch eine Schleife iteriert. Innerhalb dieser Schleife wird jeder Sensor abgefragt ob gerade ein neuer Messwert vorhanden ist. //
+Wenn ein neuer Messwert vorhanden ist, wird dieser Verwendet um eine neue Position zu schätzen und den posteriori zu aktualisieren. 

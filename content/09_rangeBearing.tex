@@ -1,0 +1,18 @@
+\chapter{Range Bearing}
+\label{chp:rangeBearing}
+
+Range Bearing Sensoren werden in der Robotik häufig verwendet. Sie geben eine Entfernung und eine Richtung, bezogen auf das Heading, zu einem Messpunkt.
+
+\section{Bewegungsmodell}
+\label{chp:rangeBearing:sec:bewegungsmodell}
+
+Auf die aktuelle Pose des Roboters wird die Veränderung addiert. Es wird ein rechtwinkliges Dreieck aufgespannt über das die
+Veränderung beschrieben werden kann. Zur Linearisierung werden die Terme partiell abgeleitet zunächst nach $x$, $y$, Winkel (Jacobi Fx) und
+dann nach dem Rauschen in Distanz $d$ und Winkel $\alpha$ (Jacobi Fv).
+
+\section{Messmodell}
+\label{chp:rangeBearing:sec:messmodell}
+Zwischen einer Landmarke und der akutellen Position wird ein rechtwinkliges Dreieck aufgespannt auf dem die Hypothenuse der Distanz
+zwischen Position und Landmarke entspricht. Die Orientierung entspricht dem Tangens der beiden Katheten in diesem Dreieck. Zur
+Linearisierung werden die Terme partiell abgeleitet nach $x$, $y$, Winkel für das Messmodell $H_x$. Das Messrauchen (hier: $W$) wird außerhalb
+des Modells addiert und ergibt nach Linearisierung eine Einheitsmatrix $H_w$
