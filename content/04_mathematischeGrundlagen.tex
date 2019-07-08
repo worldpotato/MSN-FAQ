@@ -1,0 +1,260 @@
+\chapter{Mathematische Grundlagen}
+\label{chp:MathematischeGrundlagen}
+
+
+
+
+\section{Skalarprodukt}
+\label{chp:MathematischeGrundlagen:sec:skalarprodukt}
+
+	\begin{equation}
+		\vec{a} \circ \vec{b} = |\vec{a}| \cdot |\vec{b}| \cdot \cos\varphi 
+	\end{equation}
+	\begin{equation}
+		\vec{a} \circ \vec{b} =
+		\left(
+		\begin{array}{c}
+		a_{x} \\
+		a_{y}
+		\end{array}
+		\right) 
+		\cdot 
+		\left(
+		\begin{array}{c}
+		b_{x} \\
+		b_{y}
+		\end{array}
+		\right)
+		=
+		a_{x}b_{x}
+		+
+		a_{y}b_{y} 
+	\end{equation}
+
+\section{Winkel zwischen zwei Vektoren}
+\label{chp:MathematischeGrundlagen:sec:winkelVektoren}
+	\begin{equation}
+		\cos\varphi = \frac{\vec{a} \circ \vec{b}}{|\vec{a}| \cdot |\vec{b}|}
+	\end{equation}	
+
+
+\section{Orthogonalität}
+\label{chp:MathematischeGrundlagen:sec:Orthogonalität}
+	Zwei Vektoren $\vec{a}$ und $\vec{b}$ sind Orthogonal zueinander wenn das Vektorprodukt 0 ergibt.
+		\begin{equation}
+			\vec{a} \circ \vec{b} = 0
+		\end{equation}
+
+\section{Vektorprodukt}
+\label{chp:MathematischeGrundlagen:sec:Vektorprodukt}
+	\begin{equation}
+		\vec{a} \times \vec{b} = \vec{c}
+	\end{equation}
+	\begin{equation}
+		|\vec{c}| = |\vec{a}| \cdot |\vec{b}| \cdot \sin\varphi 
+		\quad \textrm{for} \quad 
+		(\ang{0} \leq \varphi \leq \ang{180})
+	\end{equation}
+
+\subsection{Matrix/Vektorform}
+
+\begin{equation}
+\vec{a} \times \vec{b} = 
+\left(
+\begin{array}{c}
+a_{x} \\
+a_{y} \\
+a_{z}
+\end{array}
+\right)
+\times
+\left(
+\begin{array}{c}
+b_{x} \\
+b_{y} \\
+b_{z}				
+\end{array}
+\right)
+= 
+\left(
+\begin{array}{c}
+a_{y}b_{z} - b_{z}a_{y} \\
+a_{z}b_{x} - b_{x}a_{z} \\
+a_{x}b_{y} - b_{y}a_{x}  
+\end{array}
+\right)				
+\end{equation}
+
+\section{Rechte Hand Regel}
+\label{chp:MathematischeGrundlagen:sec:RechteHandRegel}
+	Die Rechte Hand gibt die Richtung der Achsen vor, die Vektoren (Finger) bilden ein Rechtssystem deren Vektorprodukte alle 0 ergeben.
+	\begin{itemize}
+		\item Daumen: X
+		\item Zeigefinger: Y
+		\item Mittelfinger: Z
+	\end{itemize}
+
+
+\section{Rotation}
+\label{chp:MathematischeGrundlagen:sec:Rotation}
+
+\subsection{Definition}
+\begin{enumerate}
+	\item Winkel der Drehung um jeweils eine Achse
+	\item Rotationsmatrix multipliziert mit der Transponierten ergibt die Einheitsmatrix $I$
+	\item Spalten stehen Senkrecht aufeinander
+\end{enumerate}
+
+\subsection{Rotation vs. Spiegelung}
+
+	\subsection{Rotation}
+ 		überführt ein Rechtwinkliges/Rechtshändiges Koordinatensystem in ein anderes Rechtwinkliges/Rechtshändiges Kooridinatensystem. RxR ist Einheitsmatrix.
+ 	\subsection{Spiegelung}
+		Die Hand wechselt. Die Detimernante wird -1
+
+\subsection{Prüfung auf Rotation}
+
+\begin{lstlisting}[
+style      = Matlab-editor,
+basicstyle = \mlttfamily,
+]
+if abs(max(max((rotation * rotation') - eye(3)))) > 0.0000000000001
+isRotation = false;
+else
+isRotation = true;
+
+\end{lstlisting}
+
+
+\section{Homogene Matrix}
+\label{chp:MathematischeGrundlagen:sec:HomogeneMatrix}
+
+\subsection{Translation und Rotation}
+\begin{equation}
+	M = 
+	\left(
+	\begin{array}{cc}
+		R & T\\
+		0 & 1
+	\end{array}
+	\right)
+	=
+	\left(
+	\begin{array}{cccc}
+		r_{11} & r_{12} & r_{13} & t_{1} \\
+		r_{21} & r_{22} & r_{23} & t_{2} \\
+		r_{31} & r_{32} & r_{33} & t_{3} \\
+		0 	   & 0    & 0    & 1  
+	\end{array}
+	\right)	
+\end{equation}
+
+\subsection{Vorteile}
+	Mehrere Bewegungen können durch Matrixmultiplikation aneinander gekettet werden bzw. leichter invertiert werden.
+
+\subsection{Intepretation als Koordinatensystem}
+
+Eine Homogene Matrix kann auch als Koordinatensystem interpretiert werden. 
+
+
+
+\subsection{Berechnung Koordinatenursprung}
+
+\begin{equation}
+T
+=
+\left(
+\begin{array}{c}
+t_{1} \\
+t_{2} \\
+t_{3} \\
+\end{array}
+\right)	
+\end{equation}
+
+
+\subsection{Berechnung der Achsen}
+\begin{equation}
+x =
+\left(
+\begin{array}{c}
+r_{11}  \\
+r_{21} \\
+r_{31} \\
+\end{array}
+\right),	
+y =
+\left(
+\begin{array}{c}
+r_{12}  \\
+r_{22} \\
+r_{32} \\
+\end{array}
+\right),	
+z =
+\left(
+\begin{array}{c}
+r_{13}  \\
+r_{23} \\
+r_{33} \\
+\end{array}
+\right)	
+\end{equation}
+
+
+\section{Koordinatensysteme}
+\label{chp:MathematischeGrundlagen:sec:Koordinatensysteme}
+
+\subsection{Affines Koordinatensystem}
+Lineare Koordinatensystem
+
+\subsection{Orthogonales Koordinatensytem}
+Rechtwinklig
+
+\subsection{Orientierungstreues Koordinatensystem}
+Es bleibt nach der rechten Hand definiert.
+
+\section{RPY Darstellung}
+\label{chp:MathematischeGrundlagen:sec:RPY}
+Jede Rotation kann als Roll, Pitch, Yaw dargestellt werden.
+
+\begin{tabular}{cc}
+	Roll & X-Achse \\
+	Pitch & Y-Achse \\
+	Yaw & Z-Achse
+\end{tabular}
+
+
+\subsection{Rotation als RPY}
+Dabei können Singularitäten auftreten. (Bei Pitch = $\pi/2 $ bzw. 90\textdegree) \\
+	\textbf{Matrix to RPY}
+\begin{lstlisting}[
+style      = Matlab-editor,
+basicstyle = \mlttfamily,
+]
+y = atan2(rotation(2,1), rotation(1,1));
+p = atan2(-rotation(3,1), rotation(1,1) * cos(y) + rotation(2,1) * sin(y));
+r = atan2(rotation(3,2)/cos(p), rotation(3,3)/cos(p));
+\end{lstlisting} 
+
+\subsection{RPY to Matrix}
+Eine Rotation, welche zuerst um die Roll, dann die Pitch und zuletzt die Yaw achse dreht
+
+\begin{equation}
+R_{\alpha, \beta, \gamma} % rpy
+=
+\left(
+\begin{array}{ccc}
+\cos{\alpha}\cos{\beta} & \cos{\alpha}\sin{\beta}\sin{\gamma} - \sin{\alpha}\cos{\gamma}  & \cos{\alpha}\sin{\beta}\cos{\gamma} + \sin{\alpha}\cos{\gamma} \\
+\sin{\alpha}\cos{\beta} & \sin{\alpha}\sin{\beta}\sin{\gamma} + \cos{\alpha}\cos{\gamma} & \sin{\alpha}\sin{\beta}\cos{\gamma} - \cos{\alpha}\sin{\gamma}  \\
+-\sin{\beta}	   & \cos{\beta}\sin{\gamma}    &   \cos{\beta}\cos{\gamma}
+\end{array}
+\right)	
+\end{equation}
+
+
+\subsection{Weitere Darstellungen}
+\begin{itemize}
+	\item Quaternionen \cite{quaternionen}
+	\item Axis/Angle Darstellung \cite{axis-angle} -> numerisch stabil
+\end{itemize}
