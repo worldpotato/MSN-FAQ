@@ -9,30 +9,29 @@
 % Documentinformations
 % Hyperlink creations and PDF Informations
 \usepackage[
-	draft=true,
+	draft=false,
 	pdftitle={title},
 	pdfsubject={},
 	pdfauthor={Your name},
 	pdfkeywords={},
-	pdfcreator={pdflatex},	
-	%Links nicht einrahmen
-	hidelinks
+	pdfcreator={pdflatex},
+	colorlinks=true, % use colors instead of frames
+	linkcolor=red
 ]{hyperref}
 
 
 % Standard Packages
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+\usepackage[german]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx, subfig}
-\usepackage{fancyhdr}
-\usepackage{lmodern}
-\usepackage{color}
-\usepackage{transparent}
-\usepackage{siunitx}
+\usepackage{fancyhdr} % fancy header
+\usepackage{lmodern} % latin modern font
+%\usepackage{color}
+%\usepackage{transparent}
+%\usepackage{siunitx}
 \usepackage[numbered,framed]{matlab-prettifier}
-% \usepackage{url}
-\usepackage{hyperref}
+
 
 % for better lists
 \usepackage{enumitem}

@@ -1,0 +1,104 @@
+\chapter{Stoffübersicht}
+\label{chp:stoffübersicht}
+
+\section{Homogene Matrix}	
+\label{chp:stoffübersicht:sec:homogeneMatrix}
+Matrix, die Positionen und Orientierung beinhaltet 
+\begin{equation}
+M = 
+\left(
+\begin{array}{cc}
+R & T\\
+0 & 1
+\end{array}
+\right)
+=
+\left(
+\begin{array}{cccc}
+r_{11} & r_{12} & r_{13} & t_{1} \\
+r_{21} & r_{22} & r_{23} & t_{1} \\
+r_{31} & r_{23} & r_{33} & t_{1} \\
+0 	   & 0    & 0    & 1  
+\end{array}
+\right)	
+\end{equation}
+
+Wird verwendet, damit man einfacher rechnen kann.
+
+\section{Pose}	
+\label{chp:stoffübersicht:sec:pose}
+Beschreibt die Lage eines Körpers. Mit seinen Raumkoordinaten und dem Heading im Bezug auf ein Referenzkoordinatensystem. \\
+Im $R_2$ z.B.: $(x, y, \alpha)$
+
+\section{Singulärwertzerlegung}	
+\label{chp:stoffübersicht:sec:singulärwertzerlegung}
+Zerlegung einer Matrix in 3 Spezielle Matrizen welche miteinander Multipliziert die grundlegende Matrix ergeben. Auf der Hauptdiagonalen der mittleren Matrix stehen die Singularitäten der grundlegenden Matrix. 
+
+\section{Levenberg‐Marquardt}
+\label{chp:stoffübersicht:sec:Levenberg‐Marquardt}
+Der Levenberg-Marquardt-Algorithmus ist ein numerischer Optimierungsalgorithmus zur Lösung nichtlinearer Ausgleichs-Probleme mit
+Hilfe der Methode der kleinsten Quadrate. Das Verfahren kombiniert das Gauß-Newton-Verfahren mit einer Regularisierungstechnik, die
+absteigende Funktionswerte erzwingt. Deutlich robuster als das Gauß-Newton-Verfahren, das heißt, er konvergiert mit einer hohen
+Wahrscheinlichkeit auch bei schlechten Startbedingungen, allerdings ist auch hier Konvergenz nicht garantiert. Ferner ist er bei
+Anfangswerten, die nahe dem Minimum liegen, oft etwas langsamer. 
+
+\section{Bündelblockausgleichung}
+\label{chp:stoffübersicht:sec:Bündelblockausgleichung}
+Das Optimieren der "Sehstrahlenbündel" einer 3D-Szene, die von mehreren Kameras bzw. von einer Kamera aus mehreren Perspektiven
+aufgenommen wird. Bei der Bündelblockausgleichung können gleichzeitig die Positionen der Punkte im 3D-Raum, die Positionen und
+Orientierungen der beobachtenden Kameras sowie deren interne Kalibrierparameter derart an die Messbilder angepasst werden, dass
+verbleibende Fehler (z. B. Bildverzerrungen, Messfehler der Auswertung) möglichst optimal auf alle Beobachtungen verteilt werden.
+Speziell wird der Begriff verwendet, um nicht nur einzelne Bildpaare (je 2 überdeckende Messbilder) photogrammetrisch auszuwerten,
+sondern eine beliebige Anzahl von zusammenhängenden Bildern (Block) miteinander zu verknüpfen. Zur Berechnung könnte man z.B.
+Levenberg-Marquardt-Algorithmus nehmen. 
+
+\section{Trajektorie}
+\label{chp:stoffübersicht:sec:Trajektorie}
+Der Weg eines Objektes in abhänigkeit von der Zeit.\\
+Stellt auch die Lösungskurve einer Differenzialgleichung dar.
+
+\begin{equation}
+P_{(t)} = 
+\left(
+	\begin{array}{c}
+	a_0 + a_1t + a_2t^2 \\
+	b_0 + b_1t + b_1t^2
+	\end{array} 
+\right)
+\end{equation} 
+
+\section{Koppelnavigation}
+\label{chp:stoffübersicht:sec:Koppelnavigation}
+Koppelnavigation oder dead reckoning ist das aneinanderfügen vergangener Standortmessungen, welche jeweils relativ zum letzten Messzeitpunkt sind.
+
+\section{Sigma Point Kalman Filter}
+\label{chp:stoffübersicht:sec:SigmaPointKalmanFilter}
+Kalman Filter für nicht lineare Gleichungssysteme. Legt eine Normalverteilte Punktwolke um den aktuellen Punkt. Stabiler als der Kalmanfilter.\\
+Er ist für sehr nicht lineare Zusammenhänge besser geeignet, da keine Linearisierung stattfindet.\\
+Sowohl das Bewegungsmodell, wie auch das Messmodell können mit Sigmapoints berechnet werden. Es kann aber auch nur  das Messmodell mit Sigmapoints in den neuen Zustand überführt werden.
+
+\section{Extended Kalman Filter}
+\label{chp:stoffübersicht:sec:ExtendedKalmanFilter}
+Der EKF ist eine nicht lineare Version des Kalman Filters welcher mittels einer Schätzung des 
+aktuellen Mittels und der Covarianzen linearisiert wird. Diese Linearisierung kann zu einer Ungenauigkeit des Filters führen. In extremen Fällen kann es zu einer Divergenz des Filters führen. Der Filter erreicht eine First-Order accuracy \cite{order-accuracy}.
+
+\section{ICP oder Scanmatching}
+\label{chp:stoffübersicht:sec:ICPoderScanmatching}
+\textbf{Iterative Closest Point} um den kürzesten Abstand zwischen zwei Punktwolken zu bestimmen. Wird genutzt um zwei verschiedene Punktwolken aufeinander anzupassen, dazu müssen diese bereits näherungsweise angepasst sein.
+
+\section{Partikelfilter}
+\label{chp:stoffübersicht:sec:Partikelfilter}
+Kann aus dem Vergleich vieler Messungen zu einer bekannten "Karte" den Ort absolut bestimmen. Damit kann er sich global positionieren. Er benötigt deutlich mehr Speicher als der Kalmanfilter und ist etwas ineffizienter, aber durch die Möglichkeit der globalen Positionierung und des fehlen einer Linearisierung ist er stabiler als ein Kalmanfilter.
+
+\section{RANSAC}
+\label{chp:stoffübersicht:sec:RANSAC}
+Random sample consensus - Eine iterative Methode um outliner zu erkennen oder eine Gerade durch eine Punktwolke zu legen, welche viele outliner hat. Er wird u.A. im Bereich des Maschinellen Sehens verwendet um eine um Ausreißer bereinigte Datenmenge (Consensus Sets) zu erstellen. Das Consensus Sets findet in Verfahren, welche die Methode der kleinsten Quadrate verwendet, besonders wichtig, da diese mit Zunahme der Ausreißer instabiler werden.
+
+\section{Loop closure}
+\label{chp:stoffübersicht:sec:LoopClosure}
+Wenn Messungen einen geschlossenen loop bilden. Dies kann genutzt werden um Filter und Ausgleichungen zu testen oder zu verbessern.
+
+\section{SLAM}
+\label{chp:stoffübersicht:sec:SLAM}
+\textbf{Simultaneous localization and mapping} - Zeitgleiches Positionieren und Mapping der Messdaten. Wird in unbekannter Umgebung verwendet um eine Map zu erstellen in der sich dann positioniert werden kann.
+

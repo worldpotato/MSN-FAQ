@@ -62,8 +62,10 @@
 	\include{preamble/header}
 	\include{preamble/footer}
 	
-	% Index of contents
 	\tableofcontents
+	\setcounter{tocdepth}{1} % Show sections
+	%\setcounter{tocdepth}{2} % + subsections
+	
 
 	% Index of pictures
 	\listoffigures
@@ -71,7 +73,11 @@
 	% Index of tables
 	\listoftables
 
-	\include{content/02_faq}
+
+	
+	
+	%\include{content/02_faq}
+	\include{content/02_stoffuebersicht}
 
 	% references
 	\bibliographystyle{unsrtdin}
