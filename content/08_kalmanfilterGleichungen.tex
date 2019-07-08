@@ -1,0 +1,83 @@
+\chapter{Kalmanfilter Gleichungen}
+\label{chp:kalmanfilterGleichungen}
+
+\section{Begriffserklärungen}
+\begin{description}
+	\item[Predicition Phase] Schätzen des Zustandes als Normalverteilung mit dem Bewegungsmodell $F$ (z.B. aus Odometrie) und dem Bewegungsrauschen $Q$
+	\item[Measurement update] Durchführung einer Messung $z$ als Normalverteilte Zufallsvariable mit Messrauschen $R$
+	\item[Estimation] Berechnung des Kalman Gain $K$ aus geschätztem Zustand und neuer Messung mit Zustandsraummodellierung $H$. Daraus
+	berechnet sich neuer Systemzustand $x$ und $P$
+	\item[a priori state estimate] Der in Schritt 1 geschätzte Systemzustand \textit{NV}($\bar{x}_k, \bar{P}_k$). Dieser wird \underline{ohne} einer neuen Messung geschätzt.
+	\item[a posteriori state estimate] Der in Schritt 3 geschätzte Systemzustand \textit{NV}($\hat{x}_k, \hat{P}_k$). Dieser wird \underline{mit} einer neuen Messung geschätzt.
+\end{description}
+
+
+
+\section{Gleichungen}
+
+% In dem enumerate sind jeweils die Formeln mit der Legende als tabular
+\begin{enumerate}
+	\item \textbf{Prediction phase}
+	\begin{equation}
+	 \bar{x}_k = F \, \hat{x}_{k-1}
+	\end{equation}
+	
+	\begin{tabular}{cl}
+	$F$ &:= Bewegungsmodell \\
+	$\hat{x}_{k-1}$ &:= Schätzung aus letztem Durchgang
+	\end{tabular}
+	
+	\begin{equation}
+	\bar{P}_k = F \, \hat{P}_{k-1} \, F^t + Q_{k-1}
+	\end{equation}
+	
+	\begin{tabular}{cl}
+	$\bar{P}_k$ & := a priori state estimate \\
+	$\hat{P}_{k-1}$ & := a posteriori state estimate des vorherigen Durchgangs \\
+	$Q_{k-1}$ & := Rauschen des vorherigen Durchgangs \\
+	\end{tabular}
+	
+	
+	
+	
+	\item \textbf{Measurement update}
+	
+	\begin{equation}
+		\tilde{z}_k = Messung + \tilde{R}_k
+	\end{equation}
+	
+	\begin{tabular}{cl}
+		$\tilde{z}_k$ & := neue Messung \\
+		$\tilde{R}_k$ & := Rauschen der Messung
+	\end{tabular}
+	
+	
+	
+
+	\item \textbf{Estimation}
+	
+	\begin{equation}
+	K_k = \frac{\bar{P}_k \, H^t_k} {(H_k \, \bar{P}_k \, H^t_k + \tilde{R}_k)}
+	\end{equation}
+	\begin{tabular}{cl}
+		$K_k$ & := neuer Kalman Gain \\
+		$H_k$ & := Messmodell
+	\end{tabular}
+
+
+	\begin{equation}
+		\hat{x}_k = \bar{x}_k + K_k \, (\tilde{z}_k - H_k \, \bar{x}_k)
+	\end{equation}
+	In dieser Gleichung werden die zwei Normalverteilungen in eine neue überführt (vgl. \ref{fig:kernideeKalman}). 
+	
+	\begin{tabular}{cl}
+		$H_k \, \bar{x}_k$ & := $\bar{z}_k$ und entspricht damit der Schätzung über das Messmodell\\
+	\end{tabular}
+
+	\begin{equation}
+		\hat{P}_k = (I - K_k \, H_k)\bar{P}_k
+	\end{equation}
+	
+	
+	
+\end{enumerate}
