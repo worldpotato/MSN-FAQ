@@ -1,0 +1,13 @@
+\chapter{Sigma Point Kalmanfilter}
+\label{chp:sigmaPointKalmanfilter}
+
+Der Sigma Point Kalmanfilter benötigt keine Linearisierung des Messmodells, da die Normalverteilung für den nächsten Schritt nicht durch das Messmodell berechnet wird.\\
+Um den wahrscheinlichsten Punkt werden Normalverteilt Sigma-Points berechnet. Diese Punkte repräsentieren die Normalverteilung und werden nun mit dem Messmodell bewegt. \\
+Durch die nun nicht mehr Normalverteilten wird nun ein neuer Zustand berechnet.
+
+\section{Kernschritte}
+\begin{enumerate}
+	\item Erstellen der Sigma Points mit Gewichtung
+	\item Bewegen der Sigma Points 
+	\item Erstellen der neuen Normalverteilung aus Sigma Points mit Gewichtung
+\end{enumerate}

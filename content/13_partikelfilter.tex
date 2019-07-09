@@ -1,0 +1,61 @@
+\chapter{Partikelfilter}
+\label{chp:partikelfilter}
+
+Der Partikelfilter ist kein Mathematischer Filter sondern ein Algorithmischer Filter. \\
+
+\section{Begriffe}
+\begin{description}
+	\item[Partikel] Eine mögliche Pose mit Gewichtung. 
+	\item[Generation] Alle Partikel in einem Iterationsschritt. \\Sei $X_k = (x_k^{(0)},...\;,x_k^{(N-1)})$ eine Folge von N Posen, dann ist $X_k$ eine Generation. Jede Generation approximiert die Wahrscheinlichkeitsdichtfunktion (WDF).
+\end{description}
+
+\section{Vorteile}
+\begin{itemize}
+	\item Globale Positionierung
+	\item Sehr stabil
+	\item Kann für nicht Normalverteile Systeme verwendet werden
+	\item Verteilung kann Multimodal sein
+	\item parallelisierbar
+\end{itemize}
+
+\section{Modellannahmen}
+
+\begin{itemize}
+	\item Nicht lineares/Lineares Messmodell
+	\item Karte/Landmarken sind bekannt
+\end{itemize}
+
+\section{Schritte}
+
+\begin{enumerate}
+ \item \textbf{Initialisierung}
+ \label{item:init}
+ Es werden Partikel über den kompletten möglichen Raum gleich verteilt. Es werden drei Schleifen benötigt. Jeweils für die \textbf{Bildhöhe}, \textbf{Breite} und für das \textbf{Heading}.\\
+ 
+ \item \textbf{Roboter Bewegung}
+ \label{item:roboterBewegung}
+ Bewege Roboter und speichern des Bewegungsmodells. 
+ 
+ \item \textbf{Messung}
+ \label{item:messung}
+ Messung des Range-Bearing Sensors [\ref{chp:rangeBearing}] durchführen und Ergebnis Speichern.
+ 
+ \item \textbf{Propagation}
+ \label{item:propagation}
+ Das Bewegungsmodell aus Schritt \ref{item:roboterBewegung} auf alle Partikel anwenden. Dafür wird ein Normalverteiltes Rauschen $Q$ auf jeden Partikel addiert. \\
+ Durch dieses Rauschen Mutiert jeder Partikel.
+ 
+ \item \textbf{Messmodell auf Partikel anwenden}
+ \label{item:messmodellAufPartikel}
+ Anschließend werden theoretische Messungen von jedem Partikel aus gemacht und das Ergebnis wird bewertet. Dabei werden alle Partikel mit einem Delta < als einem Schwellwert gespeichert.
+ 
+ \item \textbf{Gewichtung der Partikel}
+ Die gespeicherten Partikel werden anhand der Robotermessung gewichtet. Dabei werden alle Komponenten der Pose einzeln Gewichtet und anschließend zu einem Gesamtgewicht addiert.
+ 
+ \item \textbf{resampling}
+ Über alle Partikel werden die Gesamtgewichte Normalisiert. Und es wird eine zufällige neue Liste der Partikel erstellt, wobei Partikel mit hoher Gewichtung eine höhere Wahrscheinlichkeit haben. Diese neue Liste an Partikel wird im nächsten Itterationsschritt verwendet.
+ 
+ 
+ 
+ 
+\end{enumerate}

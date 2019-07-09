@@ -1,0 +1,27 @@
+\chapter{Offline Verfahren}
+\label{chp:offlineVerfahren}
+
+Offline Verfahren kommen dann zum Einsatz wenn eine Echtzeitberechnung nicht notwendig ist. Sie werden nach einer Messreihe verwendet um die Ergebnisse im Nachhinein zu verbessern. \\
+\\
+Beim Kalmanfilter wird vor allem ein Offline Verfahren verwendet.
+
+\section{Forward/Backward}
+
+Der Forward/Backward Kalmanfilter rechnet die Trajektorie einmal von Vorne und im Anschluss von Hinten. Dadurch werden Fehler ausgeglichen. 
+
+\subsection{Algorithmus}
+
+\begin{enumerate}
+	\item Berechnen des Forward Kalmanfilters (Messungen und a Posteriori)
+	\item Berechnen der Messwerte und a Posteriori für Rückwärts Rechnung.
+	\item Den finalen Messwert berechnen.
+
+\begin{equation}
+	Q = P_{forward}^{-1} + P_{backward}^{-1} \\
+\end{equation}
+
+\begin{equation}
+	x = Q \circ ( P_{forward}^{-1} \circ X_{forward} + P_{backward}^{-1} \circ X_{backward} )
+\end{equation}
+\end{enumerate}
+
