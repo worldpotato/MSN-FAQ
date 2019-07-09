@@ -25,6 +25,8 @@ Der Partikelfilter ist kein Mathematischer Filter sondern ein Algorithmischer Fi
 	\item Karte/Landmarken sind bekannt
 \end{itemize}
 
+
+\newpage
 \section{Schritte}
 
 \begin{enumerate}
@@ -52,7 +54,7 @@ Der Partikelfilter ist kein Mathematischer Filter sondern ein Algorithmischer Fi
  \item \textbf{Gewichtung der Partikel}
  Die gespeicherten Partikel werden anhand der Robotermessung gewichtet. Dabei werden alle Komponenten der Pose einzeln Gewichtet und anschließend zu einem Gesamtgewicht addiert.
  
- \item \textbf{resampling}
+ \item \textbf{Resampling}
  Über alle Partikel werden die Gesamtgewichte Normalisiert. Und es wird eine zufällige neue Liste der Partikel erstellt, wobei Partikel mit hoher Gewichtung eine höhere Wahrscheinlichkeit haben. Diese neue Liste an Partikel wird im nächsten Itterationsschritt verwendet.
  
  
