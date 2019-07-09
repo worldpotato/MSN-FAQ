@@ -1,13 +1,10 @@
-# Ich räume das dokument gerade etwas auf
-aktuelle version in Branch `tidyUp`
-
 # MSN-FAQ
 Make your changes in a seperated Branch and create a Pull Request.
 
 # Latex
 [How to get latex](https://www.latex-project.org/get/)
 
-[Texmaker (Latex Editor)](http://www.xm1math.net/texmaker/)
+[Texstudio (Latex Editor)](https://www.texstudio.org/)
 
 [Simple Guide to Latex](https://www.latex-tutorial.com/tutorials/)
 
@@ -15,7 +12,7 @@ Make your changes in a seperated Branch and create a Pull Request.
 
 # Struktur
 
-Hauptdokument: `00_master.tex`
+Hauptdokument: [00_master.pdf](00_master.pdf)
 Inhalts Seiten: `/content`
 bib file: `/bib`
 Bilder: `/img`
