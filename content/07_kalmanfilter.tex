@@ -5,16 +5,16 @@
 \begin{enumerate}
 	\item Asymptotisch stabil
 	\item Kein anderer Schätzer liefert Schätzwerte mit kleinerer Varianz
-	\item Schätzwerte sind erwartungstreu (unbiased)
+	\item Schätzwerte sind unbiased
 	\item Ohne Rauschen ist er identisch zu einem rekursiven LSQ-Schätzer \footnote{LSQ = 	Least Squares Quadratic}
 	\item Er liefert den wahrscheinlichsten Schätzwert 
 \end{enumerate}
 
 \section{Modellannahmen des Kalmanfilters}
 \begin{itemize}
-	\item Rauschen ist zufällig - normalverteilt und nicht systematisch
 	\item Lineare Abbildung, damit die Normalverteilung eine Normalverteilung bleibt.
 	\item Das Rauschen ist Zufällig.
+	\item Rauschen ist normalverteilt
 \end{itemize}
 
 Die Abbildung muss linear sein, damit die Varianz-Kovarianz Matrix im Anschluss immer noch eine Normalverteilung darstellt. (Die Normalverteilung muss eine Normalverteilung bleiben).
