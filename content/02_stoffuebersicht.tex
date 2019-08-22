@@ -44,7 +44,7 @@ Anfangswerten, die nahe dem Minimum liegen, oft etwas langsamer.
 
 \section{Bündelblockausgleichung}
 \label{chp:stoffübersicht:sec:Bündelblockausgleichung}
-Das Optimieren der "Sehstrahlenbündel" einer 3D-Szene, die von mehreren Kameras bzw. von einer Kamera aus mehreren Perspektiven
+Das Optimieren der \glqq{}Sehstrahlenbündel\grqq{} einer 3D-Szene, die von mehreren Kameras bzw. von einer Kamera aus mehreren Perspektiven
 aufgenommen wird. Bei der Bündelblockausgleichung können gleichzeitig die Positionen der Punkte im 3D-Raum, die Positionen und
 Orientierungen der beobachtenden Kameras sowie deren interne Kalibrierparameter derart an die Messbilder angepasst werden, dass
 verbleibende Fehler (z. B. Bildverzerrungen, Messfehler der Auswertung) möglichst optimal auf alle Beobachtungen verteilt werden.
@@ -62,7 +62,7 @@ P_{(t)} =
 \left(
 	\begin{array}{c}
 	a_0 + a_1t + a_2t^2 \\
-	b_0 + b_1t + b_1t^2
+	b_0 + b_1t + b_2t^2
 	\end{array} 
 \right)
 \end{equation} 
@@ -75,7 +75,7 @@ Koppelnavigation oder dead reckoning ist das aneinanderfügen vergangener Stando
 \label{chp:stoffübersicht:sec:SigmaPointKalmanFilter}
 Kalman Filter [\ref{chp:kalmanfilter}] für nicht lineare Gleichungssysteme. Legt eine Normalverteilte Punktwolke um den aktuellen Punkt. Stabiler als der Kalmanfilter.\\
 Er ist für sehr nicht lineare Zusammenhänge besser geeignet, da keine Linearisierung stattfindet.\\
-Sowohl das Bewegungsmodell, wie auch das Messmodell können mit Sigmapoints berechnet werden. Es kann aber auch nur  das Messmodell mit Sigmapoints in den neuen Zustand überführt werden.
+Sowohl das Bewegungsmodell, wie auch das Messmodell können mit Sigmapoints berechnet werden. Es kann aber auch nur das Messmodell mit Sigmapoints in den neuen Zustand überführt werden.
 
 \section{Extended Kalman Filter}
 \label{chp:stoffübersicht:sec:ExtendedKalmanFilter}
